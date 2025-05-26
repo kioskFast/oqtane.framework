@@ -10,6 +10,16 @@ steps:
 - checkout: self
   clean: true
 
+- script: |
+    echo "Creating Oqtane.Framework directory..."
+    mkdir oqtane.framework
+  displayName: 'Create Oqtane.Framework Directory'
+
+- script: |
+    echo "Cloning Oqtane Framework (master branch)..."
+    git clone --depth 1 --branch master https://github.com/kioskFast/oqtane.framework.git oqtane.framework
+  displayName: 'Clone Oqtane Framework (master branch)'
+
 - task: UseDotNet@2
   inputs:
     packageType: 'sdk'
@@ -18,17 +28,19 @@ steps:
 
 - script: |
     echo "Building Oqtane Server..."
+    cd oqtane.framework
     dotnet build Oqtane.Server.sln -c Release
   displayName: 'Build Oqtane Server'
 
 - script: |
     echo "Publishing Oqtane Server..."
+    cd oqtane.framework
     dotnet publish Oqtane.Server.sln -c Release -o $(Build.ArtifactStagingDirectory)/oqtane
   displayName: 'Publish Oqtane Server'
 
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: '33ccb08b-86ec-4841-9327-6f308fb703d4'
+    azureSubscription: '33ccb08b-86ec-4841-9327-6f308fb703d4
     appName: 'RubbishFastApp'
     package: '$(Build.ArtifactStagingDirectory)/oqtane'
   displayName: 'Deploy Oqtane to Azure Web App'
