@@ -27,22 +27,22 @@ steps:
   displayName: 'Install .NET SDK'
 
 - script: |
-    echo "Restoring dependencies for Oqtane Server..."
+    echo "Restoring dependencies for Oqtane..."
     cd oqtane.framework
-    dotnet restore Oqtane.Server.sln
+    dotnet restore Oqtane.sln
   displayName: 'Restore Dependencies'
 
 - script: |
     echo "Building Oqtane Server..."
     cd oqtane.framework
-    dotnet build Oqtane.Server.sln -c Release
-  displayName: 'Build Oqtane Server'
+    dotnet build Oqtane.sln -c Release
+  displayName: 'Build Oqtane'
 
 - script: |
     echo "Publishing Oqtane Server..."
     cd oqtane.framework
-    dotnet publish Oqtane.Server.sln -c Release -o $(Build.ArtifactStagingDirectory)/oqtane
-  displayName: 'Publish Oqtane Server'
+    dotnet publish Oqtane.sln -c Release -o $(Build.ArtifactStagingDirectory)/oqtane
+  displayName: 'Publish Oqtane'
 
 - task: AzureWebApp@1
   inputs:
