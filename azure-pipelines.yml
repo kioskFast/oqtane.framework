@@ -20,6 +20,12 @@ steps:
     git clone --depth 1 --branch master https://github.com/kioskFast/oqtane.framework.git oqtane.framework
   displayName: 'Clone Oqtane Framework (master branch)'
 
+- script: |
+    echo "Deleting appsettings.json and appsettings.release.json..."
+    rm -f oqtane.framework/Oqtane.Server/appsettings.json
+    rm -f oqtane.framework/Oqtane.Server/appsettings.release.json
+  displayName: 'Delete AppSettings Files'
+  
 - task: UseDotNet@2
   inputs:
     packageType: 'sdk'
