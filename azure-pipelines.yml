@@ -49,8 +49,8 @@ steps:
 - script: |
     echo "Publishing Oqtane Server..."
     cd oqtane.framework
-    dotnet publish Oqtane.sln -c Release -o $(Build.ArtifactStagingDirectory)/oqtane
-  displayName: 'Publish Oqtane'
+    dotnet publish Oqtane.Server/Oqtane.Server.csproj -c Release -o $(Build.ArtifactStagingDirectory)/oqtane
+  displayName: 'Publish Oqtane (Release)'
 
 - task: AzureWebApp@1
   inputs:
