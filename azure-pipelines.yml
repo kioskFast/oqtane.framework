@@ -21,12 +21,12 @@ steps:
   displayName: 'Clone Oqtane Framework (master branch)'
 
 # Remove this delete if running a new setup for the first time
-# - script: |
-#     echo "Deleting appsettings.json and appsettings.release.json..."
-#     rm -f oqtane.framework/Oqtane.Server/appsettings.json
-#     rm -f oqtane.framework/Oqtane.Server/appsettings.release.json
-#   displayName: 'Delete AppSettings Files'
 # Uncomment when doing an update to an existing install so it doesn't overwrite
+- script: |
+     echo "Deleting appsettings.json and appsettings.release.json..."
+     rm -f oqtane.framework/Oqtane.Server/appsettings.json
+     rm -f oqtane.framework/Oqtane.Server/appsettings.release.json
+  displayName: 'Delete AppSettings Files'
   
 - task: UseDotNet@2
   inputs:
