@@ -41,6 +41,12 @@ steps:
   displayName: 'Restore Dependencies'
 
 - script: |
+    echo "Building Oqtane Server..."
+    cd oqtane.framework
+    dotnet build Oqtane.sln -c Release
+  displayName: 'Build Oqtane (Release)'
+
+- script: |
     echo "Publishing Oqtane Server..."
     cd oqtane.framework
     dotnet publish Oqtane.sln -c Release -o $(Build.ArtifactStagingDirectory)/oqtane
