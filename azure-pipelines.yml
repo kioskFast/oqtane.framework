@@ -55,6 +55,6 @@ steps:
 - task: AzureWebApp@1
   inputs:
     azureSubscription: '33ccb08b-86ec-4841-9327-6f308fb703d4'
-    appName: 'RubbishFastApp'
+    appName: 'RubbishFast'
     package: '$(Build.ArtifactStagingDirectory)/oqtane'
   displayName: 'Deploy Oqtane to Azure Web App'
